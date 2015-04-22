@@ -1,4 +1,4 @@
-def largest_contiguous(arr)
+def largest_contiguous_sum(arr)
 	m = []
 	arr.each_with_index do |num, i|
         if i == 0
@@ -28,4 +28,4 @@ def largest_contiguous(arr)
 end
 
 arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-p largest_contiguous(arr)
+p largest_contiguous_sum(arr)

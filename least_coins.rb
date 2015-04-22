@@ -1,31 +1,24 @@
-def largest_contiguous(arr)
-	m = []
-	arr.each_with_index do |num, i|
-        if i == 0
-            m[i] = num
-        else
-            m[i] = [num, num + m[i - 1]].max
-        end
-	end
+def least_coins(n, coins)
+  coin_quantities = [0]
 
-    max = 0
-    max_index = 0
-    m.each_with_index do |num, i|
-        if num > max
-            max = num
-            max_index = i
-        end
+  1.upto(n) do |amount|
+    coin_amounts = []
+
+    coins.each_with_index do |coin, i|
+      if amount - coin < 0
+        coin_amounts[i] = 9999999
+      else
+        coin_amounts[i] = coin_quantities[amount - coin]
+      end
     end
 
-    sum = 0
-    cur_index = max_index
-    until sum == max
-        sum += arr[cur_index]
-        cur_index -= 1
-    end
+    coin_quantities[amount] = coin_amounts.min + 1
+  end
 
-    arr[cur_index+1..max_index]
+  coin_quantities[n]
 end
 
-arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-p largest_contiguous(arr)
+
+coins = [1, 3, 4]
+
+puts least_coins(6, coins)

@@ -1,4 +1,4 @@
-def longest_sequence(arr)
+def longest_increasing_sequence(arr)
     lengths = [1]
 
     arr.each_with_index do |num, i|
